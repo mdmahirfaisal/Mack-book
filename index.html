@@ -39,21 +39,23 @@
                         magni. Ab. </p>
                     <h4>Memory</h4>
 
-                    <button class="btn btn-outline-dark fw-bold mb-2">8GB unified memory</button>
+                    <button id="ram-8gb" class="btn btn-outline-dark fw-bold mb-2">8GB unified memory</button>
 
-                    <button class="btn btn-outline-dark fw-bold mb-2">16GB unified memory</button>
+                    <button id="ram-16gb" class="btn btn-outline-dark fw-bold mb-2">16GB unified memory</button>
                     <br>
                     <h4>Storage</h4>
-                    <button class="btn btn-outline-dark mb-2">256GB SSD storage</button>
+                    <button id="rom-256gb" class="btn btn-outline-dark mb-2">256GB SSD storage</button>
 
-                    <button class="btn btn-outline-dark mb-2">512GB SSD storage</button>
-                    <button class="btn btn-outline-dark mb-2">1TB SSD storage</button>
+                    <button id="rom-512gb" class="btn btn-outline-dark mb-2">512GB SSD storage</button>
+                    <button id="rom-1tb" class="btn btn-outline-dark mb-2">1TB SSD storage</button>
 
                     <br>
                     <h4>Choose your delivery potion</h4>
-                    <button class="btn btn-outline-dark mb-2">Friday, Aug 25 FREE Prime Delivery</button>
+                    <button id="free-delivery" class="btn btn-outline-dark mb-2">Friday, Aug 25 FREE Prime
+                        Delivery</button>
 
-                    <button class="btn btn-outline-dark mb-2">Friday, Aug 21 Delivery Charge $20</button>
+                    <button id="delivery-charge" class="btn btn-outline-dark mb-2">Friday, Aug 21 Delivery Charge
+                        $20</button>
 
                     <div class="d-flex w-50 justify-content-between align-items-center">
                         <h6 class="fw-bold">Best Price</h6>
@@ -63,29 +65,29 @@
 
                     <div class="d-flex w-50 justify-content-between align-items-center">
                         <h6 class="fw-bold">Extra Memory Cost</h6>
-                        <h5>$<span>0</span></h5>
+                        <h5>$<span id="ram-price">0</span></h5>
                     </div>
                     <hr class="w-50 m-0 mb-2 border border-dark">
 
                     <div class="d-flex w-50 justify-content-between align-items-center">
                         <h6 class="fw-bold">Extra Storage Cost</h6>
-                        <h5>$<span>0</span></h5>
+                        <h5>$<span id="storage-cost">0</span></h5>
                     </div>
                     <hr class="w-50 m-0 mb-2 border border-dark">
 
                     <div class="d-flex w-50 justify-content-between align-items-center">
                         <h6 class="fw-bold">Delivery Charge</h6>
-                        <h5>$<span>0</span></h5>
+                        <h5>$<span id="delivery-cost">0</span></h5>
                     </div>
                     <hr class="w-50 border border-dark border border-1">
 
                     <div class="d-flex w-50 justify-content-between align-items-center">
                         <h5 class="fw-bold">Total Price</h5>
-                        <h4>$<span>0</span></h4>
+                        <h4>$<span id="total-price">1299</span></h4>
                     </div>
                     <div>
                         <h5 class="fw-bold">Add promo code</h5>
-                        <input type="number" name="" id="promo-input">
+                        <input type="text" name="" id="promo-input">
                         <button id="promo-btn" class="btn btn-danger">Apply</button>
                     </div>
 
@@ -97,7 +99,7 @@
         <hr class="border border-dark border border-2">
         <section class="container">
 
-            <h1 class="text-center">Total: $<span>1299</span></h1>
+            <h1 class="text-center fw-bold">Total: $<span id="total-price-kupon">1299</span></h1>
 
         </section>
 
@@ -107,9 +109,9 @@
 
 
     <!-- bootstrap cdn js link  -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> -->
 
     <!-- js script file link  -->
     <script src="/js/main.js"></script>
