@@ -37,10 +37,30 @@ document.getElementById('ram-16gb').addEventListener('click', function () {
 // 256gb  storage  button
 
 document.getElementById('rom-256gb').addEventListener('click', function () {
-    const ram8gb = document.getElementById('storage-cost');
-    const ramText = parseInt(ram8gb.innerText);
-    if (ram8gb.innerText > 0) {
-        ram8gb.innerText = ramText - 180;
+    let storage16Gb = document.getElementById('storage-cost');
+    let storageText = parseInt(storage16Gb.innerText);
+    if (storage16Gb.innerText > 0) {
+        storage16Gb.innerText = storageText - 100;
+        console.log();
+    }
+
+    const productTotal = document.getElementById('total-price');
+    let productTotalValue = parseInt(productTotal.innerText);
+
+    if (storageText >= 100) {
+        productTotal.innerText = productTotalValue - 100;
+        console.log();
+    }
+
+
+    if (storage16Gb.innerText > 0) {
+        storage16Gb.innerText = storageText - 180;
+        console.log();
+    }
+
+    if (storageText == 180) {
+        productTotal.innerText = productTotalValue - 180;
+        console.log(productTotalValue, 'clicded');
     }
 
 });//////////////////////////////////////////////////////////////
@@ -151,4 +171,5 @@ document.getElementById('promo-btn').addEventListener('click', function () {
 
     promoInput.value = '';
 
-});/////////////////////////////////////////////////////////////////
+});
+/////////////////////////////////////////////////////////////////
