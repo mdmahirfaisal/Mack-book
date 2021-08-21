@@ -94,7 +94,7 @@ document.getElementById('rom-1tb').addEventListener('click', function () {
     }
 
     const productTotal = document.getElementById('total-price');
-    const productTotalvalue = parseInt(productTotal.innerText);
+    const productTotalvalue = parseFloat(productTotal.innerText);
 
     if (storageText == 0) {
         productTotal.innerText = productTotalvalue + 180;
@@ -112,7 +112,7 @@ document.getElementById('free-delivery').addEventListener('click', function () {
     }
 
     const productTotal = document.getElementById('total-price');
-    const productTotalvalue = parseInt(productTotal.innerText);
+    const productTotalvalue = parseFloat(productTotal.innerText);
 
     if (deliveryValue == 20) {
         productTotal.innerText = productTotalvalue - 20;
@@ -130,7 +130,7 @@ document.getElementById('delivery-charge').addEventListener('click', function ()
     }
 
     const productTotal = document.getElementById('total-price');
-    const productTotalvalue = parseInt(productTotal.innerText);
+    const productTotalvalue = parseFloat(productTotal.innerText);
 
     if (deliveryValue == 0) {
         productTotal.innerText = productTotalvalue + 20;
@@ -147,10 +147,10 @@ document.getElementById('promo-btn').addEventListener('click', function () {
     if (promoInput.value == 'stevekaku') {
 
         const productTotal = document.getElementById('total-price');
-        const productTotalvalue = parseInt(productTotal.innerText);
+        const productTotalvalue = parseFloat(productTotal.innerText);
 
         const priceKupon = document.getElementById('total-price-kupon');
-        const priceKuponValue = parseInt(priceKupon.innerText);
+        let priceKuponValue = parseFloat(priceKupon.innerText);
         let totalResult = productTotalvalue / 100;
         totalResult = totalResult * 20;
         priceKupon.innerText = priceKuponValue - totalResult;
@@ -160,10 +160,10 @@ document.getElementById('promo-btn').addEventListener('click', function () {
     else {
 
         const productTotal = document.getElementById('total-price');
-        const productTotalvalue = parseInt(productTotal.innerText);
+        const productTotalvalue = parseFloat(productTotal.innerText);
 
         const priceKupon = document.getElementById('total-price-kupon');
-        let priceKuponValue = parseInt(priceKupon.innerText);
+        const priceKuponValue = parseFloat(priceKupon.innerText);
         priceKupon.innerText = productTotalvalue;
 
         console.log('no discount');
