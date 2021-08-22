@@ -1,175 +1,104 @@
-/// 8 GB ram button
-
-document.getElementById('ram-8gb').addEventListener('click', function () {
-    const ram8gb = document.getElementById('ram-price');
-    const ramText = parseInt(ram8gb.innerText);
-    if (ram8gb.innerText == 180) {
-        ram8gb.innerText = ramText - 180;
+// Ram size
+function getRamSize(isBigRamSize) {
+    const ramCost = document.getElementById("ram-cost");
+    const bigRamSize = parseFloat(ramCost.innerText);
+    let newRamSize = bigRamSize;
+    if (isBigRamSize == true && bigRamSize < 180) {
+        newRamSize = bigRamSize + 180;
     }
 
-    const productTotal = document.getElementById('total-price');
-    const productTotalvalue = parseInt(productTotal.innerText);
+    if (isBigRamSize == false && bigRamSize > 0) {
+        newRamSize = bigRamSize && 0;
+    }
+    ramCost.innerText = newRamSize;
 
-    if (ramText == 180) {
-        productTotal.innerText = productTotalvalue - 180;
+    totalPrice();
+}
+
+// Storage size
+function getStorageSize(is512StorageSize, is1TbStorageSize) {
+    const storageCost = document.getElementById("storage-cost");
+    const bigStorageSize = parseFloat(storageCost.innerText);
+    let newStorageSize = bigStorageSize;
+
+    if (is512StorageSize == true && bigStorageSize < 100) {
+        newStorageSize = bigStorageSize + 100;
+    } else {
+        if (
+            is1TbStorageSize == true &&
+            bigStorageSize == 100 &&
+            bigStorageSize < 180
+        ) {
+            newStorageSize = bigStorageSize + 80;
+        } else {
+            if (
+                is512StorageSize == true &&
+                bigStorageSize == 180 &&
+                bigStorageSize <= 180
+            ) {
+                newStorageSize = bigStorageSize - 80;
+            } else {
+                if (is1TbStorageSize == true && bigStorageSize < 180) {
+                    newStorageSize = bigStorageSize + 180;
+                }
+            }
+        }
     }
 
-
-});
-// 16gb  ram  button 
-
-document.getElementById('ram-16gb').addEventListener('click', function () {
-    const ram16gb = document.getElementById('ram-price');
-    const ramText = parseFloat(ram16gb.innerText);
-    ram16gb.innerText = ramText + 180;
-    if (ramText > 179) {
-        ram16gb.innerText = ramText;
+    if ((is512StorageSize || is1TbStorageSize) == false && bigStorageSize > 0) {
+        newStorageSize = bigStorageSize && 0;
     }
-    const productTotal = document.getElementById('total-price');
-    const productTotalvalue = parseInt(productTotal.innerText);
+    storageCost.innerText = newStorageSize;
 
-    if (ramText == 0) {
-        productTotal.innerText = productTotalvalue + 180;
+    totalPrice();
+}
+
+// delivery cost
+function addDeliveryCost(isFirstDelivery) {
+    const deliveryCost = document.getElementById("delivery-cost");
+    const parseDeliveryCost = parseFloat(deliveryCost.innerText);
+    let addDeliveryCost = parseDeliveryCost;
+    if (isFirstDelivery == true && parseDeliveryCost < 20) {
+        addDeliveryCost = parseDeliveryCost + 20;
     }
-
-});
-///////////////////////////////////////////////////////////////
-// 256gb  storage  button
-
-document.getElementById('rom-256gb').addEventListener('click', function () {
-    let storage16Gb = document.getElementById('storage-cost');
-    let storageText = parseInt(storage16Gb.innerText);
-    if (storage16Gb.innerText > 0) {
-        storage16Gb.innerText = storageText - 100;
-        console.log();
+    if (isFirstDelivery == false && parseDeliveryCost > 0) {
+        addDeliveryCost = parseDeliveryCost - 20;
     }
+    deliveryCost.innerText = addDeliveryCost;
 
-    const productTotal = document.getElementById('total-price');
-    let productTotalValue = parseInt(productTotal.innerText);
+    totalPrice();
+}
 
-    if (storageText >= 100) {
-        productTotal.innerText = productTotalValue - 100;
-        console.log();
-    }
+function totalPrice() {
+    // ram
+    const ramCost = document.getElementById("ram-cost");
+    const bigRamSize = parseFloat(ramCost.innerText);
+    // storage
+    const storageCost = document.getElementById("storage-cost");
+    const bigStorageSize = parseFloat(storageCost.innerText);
+    // delivery
+    const deliveryCost = document.getElementById("delivery-cost");
+    const parseDeliveryCost = parseFloat(deliveryCost.innerText);
+    // sub total
+    let subTotalPrice = bigRamSize + bigStorageSize + parseDeliveryCost + 1299;
 
+    document.getElementById("total-price").innerText = subTotalPrice;
 
-    if (storage16Gb.innerText > 0) {
-        storage16Gb.innerText = storageText - 180;
-        console.log();
-    }
+    // before promo code
+    document.getElementById("price-with-coupon").innerText = subTotalPrice;
 
-    if (storageText == 180) {
-        productTotal.innerText = productTotalValue - 180;
-        console.log(productTotalValue, 'clicded');
-    }
-
-});//////////////////////////////////////////////////////////////
-// 512gb  storage button
-
-document.getElementById('rom-512gb').addEventListener('click', function () {
-
-    const storage512Gb = document.getElementById('storage-cost');
-    const storageValue = parseFloat(storage512Gb.innerText);
-    storage512Gb.innerText = storageValue + 100;
-    if (storageValue > 99) {
-        storage512Gb.innerText = storageValue;
-    }
-
-    const productTotal = document.getElementById('total-price');
-    const productTotalvalue = parseInt(productTotal.innerText);
-
-    if (storageValue == 0) {
-        productTotal.innerText = productTotalvalue + 100;
-    }
-
-});///////////////////////////////////////////////////////////////
-
-// 1tb  storage  button
-document.getElementById('rom-1tb').addEventListener('click', function () {
-    const storage1Tb = document.getElementById('storage-cost');
-    const storageText = parseFloat(storage1Tb.innerText);
-    storage1Tb.innerText = storageText + 180;
-    if (storageText > 179) {
-        storage1Tb.innerText = storageText;
-    }
-
-    const productTotal = document.getElementById('total-price');
-    const productTotalvalue = parseFloat(productTotal.innerText);
-
-    if (storageText == 0) {
-        productTotal.innerText = productTotalvalue + 180;
-    }
-
-});///////////////////////////////////////////////////////////////
-// free delivery  button
-
-document.getElementById('free-delivery').addEventListener('click', function () {
-    const delivery = document.getElementById('delivery-cost');
-    const deliveryValue = parseFloat(delivery.innerText);
-
-    if (delivery.innerText > 0) {
-        delivery.innerText = deliveryValue - 20;
-    }
-
-    const productTotal = document.getElementById('total-price');
-    const productTotalvalue = parseFloat(productTotal.innerText);
-
-    if (deliveryValue == 20) {
-        productTotal.innerText = productTotalvalue - 20;
-    }
-
-});////////////////////////////////////////////////////////////////
-// delivery  charge 20% button
-
-document.getElementById('delivery-charge').addEventListener('click', function () {
-    const delivery = document.getElementById('delivery-cost');
-    const deliveryValue = parseFloat(delivery.innerText);
-
-    if (delivery.innerText <= 0) {
-        delivery.innerText = deliveryValue + 20;
-    }
-
-    const productTotal = document.getElementById('total-price');
-    const productTotalvalue = parseFloat(productTotal.innerText);
-
-    if (deliveryValue == 0) {
-        productTotal.innerText = productTotalvalue + 20;
-    }
+    // after promo code
+    const applyPromo = document.getElementById("apply-promo");
+    applyPromo.addEventListener("click", function () {
+        const promoValue = document.getElementById("promo-input");
+        let usePromo = promoValue.value;
+        let totalPrice = subTotalPrice;
+        if (usePromo == "stevekaku") {
+            let usePercentage = totalPrice / 100;
+            document.getElementById("price-with-coupon").innerText =
+                totalPrice - usePercentage * 20;
+        }
 
 
-});/////////////////////////////////////////////////////////////////
-
-//  kupon  code section  total price
-
-document.getElementById('promo-btn').addEventListener('click', function () {
-    const promoInput = document.getElementById('promo-input');
-    const promoValue = promoInput.value;
-    if (promoInput.value == 'stevekaku') {
-
-        const productTotal = document.getElementById('total-price');
-        const productTotalvalue = parseFloat(productTotal.innerText);
-
-        const priceKupon = document.getElementById('total-price-kupon');
-        let priceKuponValue = parseFloat(priceKupon.innerText);
-        let totalResult = productTotalvalue / 100;
-        totalResult = totalResult * 20;
-        priceKupon.innerText = priceKuponValue - totalResult;
-
-        console.log('20%  discoount');
-    }
-    else {
-
-        const productTotal = document.getElementById('total-price');
-        const productTotalvalue = parseFloat(productTotal.innerText);
-
-        const priceKupon = document.getElementById('total-price-kupon');
-        const priceKuponValue = parseFloat(priceKupon.innerText);
-        priceKupon.innerText = productTotalvalue;
-
-        console.log('no discount');
-    }
-
-    promoInput.value = '';
-
-});
-/////////////////////////////////////////////////////////////////
+    });
+}
